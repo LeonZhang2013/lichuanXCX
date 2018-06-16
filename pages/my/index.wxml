@@ -1,0 +1,30 @@
+<!--index.wxml-->
+<view class="container">
+  <view>
+    <view class="userinfo">
+      <image wx:if="{{userInfo && userInfo.avatarUrl}}" class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{ userInfo.nickName }}</text>
+    </view>
+
+    <view class='item margin-20' bindtap='wallet'>
+      <image class="icon" src="../../images/address.png"></image>
+      <text class="font_middle">地址管理</text>
+    </view>
+
+    <view>
+      <view class='item' bindtap='orderList'>
+        <image class="icon" src="../../images/myorder.png"></image>
+        <text class="font_middle">我的订单</text>
+      </view>
+      <view class='item' bindtap='myArt'>
+        <image class="icon" src="../../images/contact.png"></image>
+        <text class="font_middle">投诉建议</text>
+      </view>
+      <view class='item' bindtap='callme'>
+        <image class="icon" src="../../images/about.png"></image>
+        <text class="font_middle">关于我们</text>
+      </view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,94 @@
+<!--index.wxml-->
+<!--1px = 750/320 = 2.34rpx;-->
+<view class="container">
+  <!-- 头图  -->
+  <view class="swiper-container">
+    <swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
+      <block wx:for="{{banners}}" wx:key="id">
+        <swiper-item>
+          <image bindtap="tapBanner" data-id="{{index}}" src="{{item}}" class="slide-image" mode='aspectFit' width="750rpx" height="562.5rpx" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="dots">
+      <block wx:for="{{banners}}" wx:key="unique">
+        <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+      </block>
+    </view>
+  </view>
+  <!-- 省略点  -->
+  <view class="type-container">
+    <scroll-view class="type-navbar" scroll-x="true">
+      <view class="type-box" wx:for-items="{{categories}}" wx:key="id">
+        <view id="{{item.id}}" class="type-navbar-item {{activeCategoryId == item.id ? 'type-item-on' : ''}}" bindtap="tabClick">
+          {{item.name}}
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 详情  -->
+
+  <view class="goods-container">
+    <view class="title">{{goods.name}}</view>
+    <view class="subtitle">{{goods.subtitle}}</view>
+    <view class="price" style='display:flex;'>
+      <view class="yy">¥</view> {{goods.price}}
+      <view class="yy">/{{goods.unit}}</view>
+      <view class="has-buy"> 已卖出 {{saleNum}}{{goods.unit}}</view>
+    </view>
+  </view>
+
+
+  <view class='deital_title'>商品介绍</view>
+  <view class="detail-images" wx:for-items="{{detail}}" wx:key="{{index}}" data-id="{{item.id}}">
+    <image src="{{item}}" class="image" mode="withdFix" lazy-load="true" />
+  </view>
+  <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
+
+
+  <!-- 底部输入框  -->
+  <view class="footer-box">
+    <view class="shop-cart-btn gotoleft" bindtap="contact">
+      <image class='cart_icon' src='/images/weixin.png'></image>
+      <view class="shop-text">客 服</view>
+    </view>
+    <view class="shop-cart-btn" bindtap="goShopCar">
+      <image class='cart_icon' src='/images/icon-cart.png'></image>
+      <text class="shop-num">{{itemCartNum}}</text>
+      <view class="shop-text"> 购物车 </view>
+    </view>
+    <view class="join-shop-cart" bindtap="showBuyLayout">加入购物车</view>
+  </view>
+
+
+  <view class="show-popup" hidden="{{hideShopPopup}}">
+    <view class="popup-mask" bindtap="closePopupTap"></view>
+    <view class="popup-contents">
+      <view class="pop-goods-info">
+        <view class="pop-img-box">
+          <image src="/images/test/head1.jpg" class="goods-thumbnail" />
+        </view>
+        <view class="pop-goods-des">
+          <view class="pop-goods-title">{{goods.name}}</view>
+          <view class="pop-goods-price">￥{{goods.price}}</view>
+        </view>
+        <view class="pop-goods-close" bindtap="closePopupTap"></view>
+      </view>
+      <view class="buy-num-box">
+        <view class="num-label">购买数量</view>
+        <view class="num-box">
+          <view class="num-jian {{buyNumber == buyNumMin ? 'hui': ''}}" bindtap="numJianTap">-</view>
+          <view class="num-input">
+            <input type="number" value="{{buyNumber}}" bindinput='inputNumber' />
+          </view>
+          <view class="num-jia {{buyNumber== buyNumMax ? 'hui': ''}}" bindtap="numJiaTap">+</view>
+        </view>
+      </view>
+      <view class="popup-join-btn" data-item='{{goods}}' bindtap="addGoods">
+        加入购物车
+      </view>
+    </view>
+  </view>
+
+
+</view>

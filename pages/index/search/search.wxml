@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<!--1px = 750/320 = 2.34rpx;-->
+<view class="container">
+  <view class="search-view" style="background:{{ scrollTop === 0 ?'-webkit-linear-gradient(top, rgba(105,195,170, 1), rgba(105,195,170, 0.3))' :( scrollTop<200 ? 'rgba(105,195,170,'+(scrollTop/400+0.3) +')' : 'rgba(105,195,170,1)')  }} ">
+    <view class="search-content">
+      <image src="/images/search-pic.png" class="search-icon" />
+      <input placeholder="请输入搜索内容" class="search-input" maxlength="30" confirm-type="搜索" bindinput='listenerSearchInput' bindconfirm='toSearch'>
+      </input>
+      <button class='search-btn' bindtap="toSearch">搜索
+      </button>
+    </view>
+  </view>
+  <view   class="goods-container padding_top">
+    <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}">
+      <view class="img-box" data-item='{{item}}' bindtap="toDetailsTap">
+        <image src="{{item.main_image}}" class="image" mode="aspectFill" lazy-load="true" />
+      </view>
+      <view class="goods-title">{{item.name}}</view>
+      <view style='display:flex;'>
+        <view class="goods-price">¥ {{item.price}} / {{item.unit}}</view>
+        <image class="cart_icon" mode="aspectFill" src='/../../images/addCart.png' bindtap='addCart' data-item='{{item}}'></image>
+      </view>
+    </view>
+  </view>
+  <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
+</view>

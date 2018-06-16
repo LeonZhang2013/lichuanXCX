@@ -1,0 +1,5 @@
+@import "./../index.wxss";
+
+.padding_top{
+  margin-top: 90rpx;
+}
