@@ -9,7 +9,9 @@
     "pages/index/index",
     "pages/index/search/search",
     "pages/my/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/show-address/index",
+    "pages/order-details/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

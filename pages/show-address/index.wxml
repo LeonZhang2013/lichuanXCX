@@ -1,0 +1,20 @@
+<view class="container">
+
+
+  <view class="add-address" hidden="{{addressInfo}}">
+    <view class="title" bindtap="addAddress">新增收货地址</view>
+  </view>
+  <view class="list-title">地址列表</view>
+  <view class="address-box">
+    <view class="a-goods" wx:for-items="{{addressInfo}}" wx:key="{{index}}">
+      <view class="show-address" bindtap="selectAddress">
+        <view class="name-tel">{{item.name}} {{item.mobile}}</view>
+        <view class="addr-text">{{item.city}} {{item.address}}</view>
+      </view>
+
+    </view>
+
+
+  </view>
+
+</view>

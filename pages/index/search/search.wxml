@@ -10,15 +10,17 @@
       </button>
     </view>
   </view>
-  <view   class="goods-container padding_top">
+  <view class="goods-container padding_top">
     <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}">
       <view class="img-box" data-item='{{item}}' bindtap="toDetailsTap">
         <image src="{{item.main_image}}" class="image" mode="aspectFill" lazy-load="true" />
       </view>
-      <view class="goods-title">{{item.name}}</view>
-      <view style='display:flex;'>
-        <view class="goods-price">¥ {{item.price}} / {{item.unit}}</view>
-        <image class="cart_icon" mode="aspectFill" src='/../../images/addCart.png' bindtap='addCart' data-item='{{item}}'></image>
+      <view class="goods-title">{{item.name}}{{item.subtitle}}</view>
+      <view class='money-class'>
+        <view class="goods-y">¥ </view>
+        <view class="goods-price"> {{item.price}}</view>
+        <view class="goods-unit">.00  /  {{item.unit}}</view>
+        <image class="cart_icon" mode="aspectFill" src='../../../images/addCart.png' bindtap='addCart' data-item='{{item}}'></image>
       </view>
     </view>
   </view>

@@ -9,8 +9,14 @@ Page({
     orderList: []
   },
 
-  onLoad() {
+  onLoad(res) {
     var that = this
+    if (res.status!=null) {
+      that.setData({
+        currentType: res.status
+      })
+    }
+
     network.GET({
       url: app.url.getOrderStatus,
       data: {},
@@ -20,6 +26,7 @@ Page({
         })
       }
     })
+
   },
 
 
@@ -34,8 +41,10 @@ Page({
   },
 
 
+
   orderDetail: function (e) {
     var orderId = e.currentTarget.dataset.id;
+    console.log(orderId)
     wx.navigateTo({
       url: "/pages/order-details/index?id=" + orderId
     })
@@ -51,15 +60,15 @@ Page({
       success: function (res) {
         if (res.confirm) {
           wx.showLoading();
-          wx.request({
-            url: 'https://api.it120.cc/' + app.globalData.subDomain + '/order/close',
+          network.POST({
+            url: app.url.cancelOrder,
             data: {
-              token: wx.getStorageSync('token'),
-              orderId: orderId
+              order_id: orderId
             },
             success: (res) => {
+              console.log(res)
               wx.hideLoading();
-              if (res.data.code == 0) {
+              if (res.data.code == 1) {
                 that.onShow();
               }
             }
@@ -68,6 +77,28 @@ Page({
       }
     })
   },
+
+  goodsOk(e) {
+    console.log(e.currentTarget.dataset.id)
+    var that = this;
+    network.POST({
+      url: app.url.goodsOk,
+      data: {
+        order_id: e.currentTarget.dataset.id
+      },
+      success(res){
+        console.log(res)
+        if(res.code == 1){
+          that.onShow()
+        }else{
+          wx.showModal({
+            content: res.data.message,
+          })
+        }
+      }
+    })
+  },
+
 
 
   toPayTap: function (e) {
@@ -83,7 +114,7 @@ Page({
             console.log(res)
           },
           success: function (res) {
-            this.getOrderList(0, 1, 10);
+            that.getOrderList(that.data.currentType, 1, 10);
           },
           complete: function (res) {
             console.log(res)
@@ -104,8 +135,13 @@ Page({
         status: status
       },
       success(res) {
+       let data = res.data.data;
+       for (let i = 0; i < data.length; i++) {
+         data[i].create_time = that.fomartDate(data[i].create_time)
+        }
+       console.log(data)
         that.setData({
-            orderList: res.data.data
+          orderList: data
         });
       },
       complete(res) {
@@ -118,8 +154,24 @@ Page({
   onShow: function () {
     // 获取订单列表
     wx.showLoading();
-    var that = this;
-    this.getOrderList(0, 1, 10);
+    this.getOrderList(this.data.currentType, 1, 10);
   },
+
+
+  fomartDate:function (time) {
+    let current = new Date().getTime();
+    let offset = (current - time) / 1000;
+    if(offset < 60) {
+      return "刚刚";
+    }
+  if (offset < 3600) {
+      return parseInt(offset / 60) + "分钟前";
+    }
+  if (offset < 36000) {
+      return parseInt(offset / 3600) + "小时前";
+    }
+  let date = new Date(time)
+  return date.getFullYear() + "年" + date.getMonth() + "月" + date.getDate() + "日  " + date.getHours() + ":" + date.getMinutes()+"分";
+  }
 
 })

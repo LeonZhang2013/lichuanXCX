@@ -1,7 +1,7 @@
 // pages/to-pay-order/index.js
 var network = require("/../../utils/network.js")
-var shopCart = require('./../shop-cart/shopCart.js'); 
-var payUtil = require('/../../utils/payUtils.js'); 
+var shopCart = require('./../shop-cart/shopCart.js');
+var payUtil = require('/../../utils/payUtils.js');
 var app = getApp();
 Page({
 
@@ -52,14 +52,20 @@ Page({
       data: {},
       success: function (res) {
         console.log(res)
-        that.setData({
-          addressInfo: res.data.data.address,
-          goodsList: res.data.data.cart,
-          charge: res.data.data.charge,
-          yunPrice: res.data.data.charge.totalFreight,
-          allGoodsPrice: res.data.data.charge.totalGoodsPrice,
-          allGoodsAndYunPrice: res.data.data.charge.totalPrice
-        })
+        if (res.data.code == 1) {
+          that.setData({
+            addressInfo: res.data.data.address,
+            goodsList: res.data.data.cart,
+            charge: res.data.data.charge,
+            yunPrice: res.data.data.charge.totalFreight,
+            allGoodsPrice: res.data.data.charge.totalGoodsPrice,
+            allGoodsAndYunPrice: res.data.data.charge.totalPrice
+          })
+        } else {
+          wx.showModal({
+            title: res.data.message,
+          })
+        }
       }
     })
   },
@@ -77,16 +83,18 @@ Page({
         payUtil.pay({
           fail: function (res) {
             wx.redirectTo({
-              url: '/pages/order-list/order_list',
+              url: '/pages/order-list/order_list?status=0',
             })
           },
           success: function (res) {
-            console.log("success" + res)
+            wx.redirectTo({
+              url: '/pages/order-list/order_list?status=1',
+            })
           },
           complete: function (res) {
             shopCart.orderCommit();
           }
-        },res);
+        }, res);
       }
     })
   },

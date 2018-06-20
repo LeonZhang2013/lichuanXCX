@@ -1,11 +1,13 @@
 //app.js
-//var host = 'https://www.lichuanshipin.ltd/lichuan/';
-var host = 'http://47.96.97.84/lichuan/';
+var host = 'https://www.lichuanshipin.ltd/lichuan/';
+//var host = 'http://47.96.97.84/lichuan/';
+//var host = 'http://118.31.62.167/lichuan/'
 
 App({
 
   url: {
     login: host + 'wx/user/login',
+    getOrderDetail: host +"order/getWxOrderDetail",
     addWXAddress: host + "wx/user/addWXAddress",
     getWXAddress:host +"wx/user/wxAddress",
     payment: host +"wx/pay/payment",
@@ -19,10 +21,14 @@ App({
     saveCart: host + "cart/saveCart",
     getAddress: host +"user/getAddress",
     getMyAddressAndFreight: host +"user/getMyAddressAndFreight",
+    getUserAddress: host + "user/getUserAddress",
     createOrder: host +"order/createOrder",
+
     getOrderList: host +"order/getWxOrderList",
     getOrderStatus: host +"order/getOrderStatus",
     getSaleNum: host + "order/getSaleNum",
+    cancelOrder: host +"order/cancelOrder",
+    goodsOk: host + "order/goodsOk"
   },
   
 

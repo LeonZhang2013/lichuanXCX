@@ -1,48 +1,31 @@
-// pages/my/index.js
-var app = getApp()
+// pages/show-address/index.js
+var network = require("/../../utils/network.js")
+var app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo:{}
+    addressInfo: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      this.setData({
-        userInfo: app.globalData.userInfo
-      })
-  },
-
-  managerAddress:function(){
-    wx.navigateTo({
-      url: '/pages/show-address/index',
-    })
-  },
-
-  orderList: function () {
-        wx.navigateTo({
-          url: '/pages/order-list/order_list',
+    var that = this
+    network.GET({
+      url: app.url.getUserAddress,
+      data: {},
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          addressInfo: res.data.data.address,
         })
-  },
-
-  callme:function(){
-      wx.showModal({
-        title: '投诉建议',
-        content: '拨通客服电话',
-        success(res){
-          console.log(res)
-          if(res.confirm){
-            wx.makePhoneCall({
-              phoneNumber: '0818-8960111' //仅为示例，并非真实的电话号码
-            })
-          }
-        }
-      })
+      }
+    })
   },
 
   /**

@@ -53,6 +53,7 @@ Page({
         app.globalData.xcxId = res.data.data.xcx_id
       },
       complete() {
+        console.log("aaaaaaaaa")
         that.setData({
           remind: ''
         });

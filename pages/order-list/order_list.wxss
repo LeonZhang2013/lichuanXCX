@@ -1,6 +1,7 @@
 .container{
     width: 100%;
     background-color: #F2f2f2;
+    font-size: 12pt;
 }
 .status-box{
     width:100%;
@@ -15,7 +16,6 @@
     width: 150rpx;
     height: 100%;
     text-align: center;
-    font-size:28rpx;
     color:#353535;
     box-sizing: border-box;
     position: relative;
@@ -50,7 +50,6 @@
     margin-bottom: 31rpx;
 }
 .no-order .text{
-    font-size:28rpx;
     color:#999999;
     text-align: center
 }
@@ -67,12 +66,10 @@
     height: 88rpx;
     display: flex;
     justify-content: space-between;
-    font-size:26rpx;
     color:#000000;
     align-items: center;
 }
 .order-list .a-order .order-date .red{
-    font-size:26rpx;
     color:#e64340;
 }
 .a-order  
@@ -108,7 +105,6 @@
 }
 .goods-info  .goods-des{
     width: 540rpx;
-    font-size:26rpx;
     color:#000000;
     overflow: hidden;
 }
@@ -140,10 +136,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size:26rpx;
+    
 }
 .order-list .a-order .price-box .total-price{
-    font-size:26rpx;
     color:#e64340;
 }
 .a-order .price-box .btn{

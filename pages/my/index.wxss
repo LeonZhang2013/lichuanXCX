@@ -42,7 +42,7 @@
   margin: 30rpx 40rpx;
 }
 .font_middle{
-  font-size: 33rpx;
+  font-size: 12pt;
 }
 
 .margin-20{

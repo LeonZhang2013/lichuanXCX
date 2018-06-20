@@ -1,3 +1,4 @@
+ 
 /**index.wxss**/
 
 .container {
@@ -6,6 +7,7 @@
 }
 .swiper-container{
   width: 750rpx;
+  margin-top: 100rpx;
   position: relative;  
 }
 .swiper_box {
@@ -56,7 +58,7 @@ swiper-item image {
 .type-box{
   width:160rpx;
   box-sizing: content-box;
-  font-size: 24rpx;
+  font-size: 30rpx;
   line-height: 84rpx;
   text-align: center;
   display: inline-block;
@@ -76,9 +78,10 @@ swiper-item image {
   box-sizing: content-box;
   padding: 14rpx;
 }
+
 .goods-box{
   width: 360rpx;
-  height: 500rpx;
+  height: auto;
   background-color: #fff;
   overflow: hidden;
   margin-bottom: 10rpx;
@@ -90,14 +93,17 @@ swiper-item image {
 }
 
 .goods-box .goods-title{
-  width: 280rpx;
+  overflow: hidden;  
+  display: -webkit-box;  
+  -webkit-line-clamp: 2;  
+  -webkit-box-orient: vertical;  
+
+  width: 310rpx;
   word-break:break-all;
-  font-size: 24rpx;
+  font-size: 11pt;
   padding: 10rpx 0 0 0;
   color:#000;
   margin-left: 24rpx;
-
-  
 }
 
 .goods-subtitle{
@@ -105,36 +111,47 @@ swiper-item image {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  font-size: 24rpx;
+  font-size: 30rpx;
   padding: 5rpx 0 0 0;
   color:gray;
   margin-left: 24rpx;
 }
-.goods-box .goods-y{
-  position: absolute;
-  bottom: 0;
-  width: auto;
-  margin-left: 24rpx;
-  font-size: 24rpx;
+.money-class{
+  position: relative;
+  display:flex; 
+  margin: 30rpx 20rpx;
+   align-items: baseline;
+  vertical-align:text-bottom;
   color:#e64340;
+}
+.goods-box .goods-y{
+  position: relative;
+  width: auto;
+  font-size: 10pt;
 }
 .goods-box .goods-price{
-  width: 280rpx;
-  margin-left: 40rpx;
-  font-size: 30rpx;
-  color:#e64340;
+  width: auto;
+  margin-left: 5rpx;
+  margin-bottom: 2rpx;
+  font-size: 12pt;
 }
+.goods-box .goods-unit{
+  width: auto;
+  font-size: 10pt;
+}
+
+
 .cart_icon{
   position: absolute;
-  right: 0;
-  padding-right: 15rpx;
-  width: 42rpx;
-  height: 42rpx;
+  right: 20rpx;
+  bottom: 1rpx;
+  width: 52rpx;
+  height: 52rpx;
 }
 
 .no-more-goods{
   text-align: center;
-  font-size: 24rpx;
+  font-size: 30rpx;
   padding-bottom:48rpx; 
   color: #999;
 }

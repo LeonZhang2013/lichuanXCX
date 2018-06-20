@@ -163,7 +163,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: app.globalData.shopName + '——' + app.globalData.shareProfile,
-      path: '/pages/index/index',
+      path: '/pages/start/start',
       success: function (res) {
         // 转发成功
       },

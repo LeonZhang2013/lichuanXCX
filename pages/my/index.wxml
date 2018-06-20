@@ -6,7 +6,7 @@
       <text class="userinfo-nickname">{{ userInfo.nickName }}</text>
     </view>
 
-    <view class='item margin-20' bindtap='wallet'>
+    <view class='item margin-20' bindtap='managerAddress'>
       <image class="icon" src="../../images/address.png"></image>
       <text class="font_middle">地址管理</text>
     </view>
@@ -16,11 +16,11 @@
         <image class="icon" src="../../images/myorder.png"></image>
         <text class="font_middle">我的订单</text>
       </view>
-      <view class='item' bindtap='myArt'>
+      <view class='item' bindtap='callme'>
         <image class="icon" src="../../images/contact.png"></image>
         <text class="font_middle">投诉建议</text>
       </view>
-      <view class='item' bindtap='callme'>
+      <view class='item' bindtap='contact'>
         <image class="icon" src="../../images/about.png"></image>
         <text class="font_middle">关于我们</text>
       </view>
