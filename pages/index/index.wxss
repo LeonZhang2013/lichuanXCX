@@ -13,14 +13,14 @@
 .swiper_box {
   width: 100%;
   background: white;
-  height:562.5rpx;
+  height:330rpx;
 }
 
 swiper-item image {
   width: 100%;
   display: inline-block;
   overflow: hidden;
-  height:562.5rpx;
+  height:330rpx;
 }
 .swiper-container .dots{  
   position: absolute;  

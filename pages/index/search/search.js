@@ -54,6 +54,7 @@ Page({
       data: {
         page: pageIndex,
         categoryId: categoryId,
+        status:1,
         keyword: that.data.searchInput,
       },
       success: function (res) {
