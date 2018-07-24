@@ -13,7 +13,7 @@
 .swiper_box {
   width: 100%;
   background: white;
-  height:330rpx;
+  height:380rpx;
 }
 
 swiper-item image {

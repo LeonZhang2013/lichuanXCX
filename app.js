@@ -1,6 +1,6 @@
 //app.js
-var host = 'https://www.lichuanshipin.ltd/lichuan/';
-//var host = 'http://47.96.97.84/lichuan/';
+//var host = 'https://www.lichuanshipin.ltd/lichuan/';
+var host = 'http://47.96.97.84/lichuan/';
 //var host = 'http://118.31.62.167/lichuan/'
 
 App({
